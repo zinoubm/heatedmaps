@@ -1,0 +1,1 @@
+from heatedmaps.serializers.product import ProductSerializer

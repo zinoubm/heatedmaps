@@ -1,0 +1,1 @@
+from heatedmaps.views.product import ProductListCreateAPIView
