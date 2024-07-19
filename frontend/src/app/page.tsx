@@ -121,8 +121,22 @@ export default function Home() {
         <PricingCard />
       </section>
 
-      <footer className="w-full py-24 bg-black">
-        <div className="text-white">placehoder</div>
+      <footer className="w-full flex flex-col items-center py-24 bg-black">
+        <div className="flex flex-col items-center">
+          <Image
+            src="/logo-contrast.svg"
+            width={260}
+            height={30}
+            style={{ height: "auto" }}
+            alt="heatedmaps logo"
+          />
+          <Link
+            href="#"
+            className="rounded-full mt-4 bg-white border-white border-2 text-black py-3 px-8 md:px-12 font-bold text-xs md:text-sm hover:bg-orangeaccent"
+          >
+            Get Started
+          </Link>
+        </div>
       </footer>
     </main>
   );
