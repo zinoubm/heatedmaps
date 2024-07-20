@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 type Props = {};
 
@@ -43,6 +44,7 @@ const PricingCard = (props: Props) => {
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between bg-orangeaccent">
+      <GoogleTagManager gtmId="GTM-PSFF9DPG" />
       <Navbar />
 
       <section className="flex w-fullflex flex-col items-center align-middle pt-36 md:pt-48 lg:px-32">
