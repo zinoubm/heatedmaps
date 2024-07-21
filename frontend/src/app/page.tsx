@@ -31,7 +31,7 @@ const FeatureCard = (props: Props) => {
 
 const PricingCard = (props: Props) => {
   return (
-    <div className="flex flex-col absolute bottom-0 w-[348px] py-16 px-2 items-center bg-transparent bg-white rounded">
+    <div className="flex flex-col absolute bottom-0 h-[524px] w-[348px] py-16 px-2 items-center bg-transparent bg-white rounded">
       <div className="h-16 w-16 bg-black rounded-full"></div>
       <H2 className="text-center lg:text-4xl mt-4">Clicks Tracking Heatmaps</H2>
       <P className="text-center">
@@ -164,12 +164,15 @@ export default function Home() {
               </li>
             </ul>
           </nav>
-          <Link className="text-white" href="#">
-            Privacy Policy
-          </Link>
-          <Link className="text-white" href="#">
-            Terms Of Service
-          </Link>
+          <nav>
+            <Link className="text-white" href="#">
+              Privacy Policy
+            </Link>
+            &nbsp; &nbsp;
+            <Link className="text-white" href="#">
+              Terms Of Service
+            </Link>
+          </nav>
         </div>
       </footer>
     </main>
