@@ -17,7 +17,7 @@ const Navbar = async (props: Props) => {
       <nav className="absolute left-[50%] top-[50%] transform translate-x-[-50%] translate-y-[-50%] hidden md:block">
         <ul className="flex items-center gap-4 list-none">
           <li>
-            <Link href="#">Product</Link>
+            <Link href="#product">Product</Link>
           </li>
           <li>
             <Link href="#">Pricing</Link>

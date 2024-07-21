@@ -101,7 +101,10 @@ export default function Home() {
         />
       </section>
 
-      <section className="flex flex-col items-center w-full lg:px-12 mt-24">
+      <section
+        id="product"
+        className="flex flex-col items-center w-full lg:px-12 mt-24"
+      >
         <H1 className="text-center px-8 mt-8 md:mt-12 md:w-3/5">
           Don’t Imagine, Just Observe
         </H1>
@@ -161,7 +164,9 @@ export default function Home() {
               </li>
             </ul>
           </nav>
-          <div className="text-white">privacy</div>
+          <Link className="text-white" href="#">
+            Privacy Policy
+          </Link>
         </div>
       </footer>
     </main>
