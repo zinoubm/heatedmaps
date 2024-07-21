@@ -167,6 +167,9 @@ export default function Home() {
           <Link className="text-white" href="#">
             Privacy Policy
           </Link>
+          <Link className="text-white" href="#">
+            Terms Of Service
+          </Link>
         </div>
       </footer>
     </main>
