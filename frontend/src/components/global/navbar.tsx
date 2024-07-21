@@ -1,15 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { MenuIcon } from "lucide-react";
-import { P } from "./typography";
 
 type Props = {};
 
 const Navbar = async (props: Props) => {
   return (
-    <header className="fixed right-0 left-0 top-0 py-8 px-4 lg:px-16 backdrop-blur-lg z-[100] flex items-center justify-between">
+    <header className="sticky top-0 w-full py-8 px-4 lg:px-16 backdrop-blur-lg z-[100] flex items-center justify-between">
       <Image
         src="/logo.svg"
         width={198}

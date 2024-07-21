@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { GoogleTagManager } from "@next/third-parties/google";
+import Banner from "@/components/global/banner";
 
 type Props = {};
 
@@ -45,9 +46,10 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between bg-orangeaccent">
       <GoogleTagManager gtmId="GTM-PSFF9DPG" />
+      <Banner />
       <Navbar />
 
-      <section className="flex w-fullflex flex-col items-center align-middle pt-36 md:pt-48 lg:px-32">
+      <section className="flex w-fullflex flex-col items-center align-middle pt-12 md:pt-24 lg:px-32">
         <H1 className="text-center">
           Visualize User Behavior Using Heat maps.
         </H1>
@@ -123,7 +125,7 @@ export default function Home() {
         <PricingCard />
       </section>
 
-      <footer className="w-full flex flex-col items-center py-24 bg-black">
+      <footer className="w-full flex flex-col items-center py-12 bg-black">
         <div className="flex flex-col items-center">
           <Image
             src="/logo-contrast.svg"
@@ -138,6 +140,28 @@ export default function Home() {
           >
             Get Started
           </Link>
+        </div>
+        <div className="flex flex-col md:flex-row md:px-24 items-center w-full justify-between">
+          <nav className="py-8">
+            <ul className="flex items-center gap-4 list-none text-white">
+              <li>
+                <Link href="#">Sign Up</Link>
+              </li>
+              <li>
+                <Link href="#">Sign In</Link>
+              </li>
+              <li>
+                <Link href="#">Pricing</Link>
+              </li>
+              <li>
+                <Link href="https://blog.heatedmaps.com">Blog</Link>
+              </li>
+              <li>
+                <Link href="#">About</Link>
+              </li>
+            </ul>
+          </nav>
+          <div className="text-white">privacy</div>
         </div>
       </footer>
     </main>
