@@ -2,8 +2,8 @@ import React from "react";
 
 type Props = {};
 
-const SignIn = (props: Props) => {
+const SignInForm = (props: Props) => {
   return <div>SignIn</div>;
 };
 
-export default SignIn;
+export default SignInForm;

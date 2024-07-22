@@ -8,7 +8,7 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
   return (
-    <div className="flex flex-col items-center py-12 px-4 w-full min-h-screen bg-orangeaccent">
+    <div className="flex flex-col items-center py-12 px-8 w-full min-h-screen bg-orangeaccent">
       <Image
         src="/logo.svg"
         width={198}
