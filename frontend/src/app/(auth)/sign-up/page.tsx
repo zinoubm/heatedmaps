@@ -22,7 +22,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-export const formSchema = z
+const formSchema = z
   .object({
     firstName: z.string().min(2).max(50),
     lastName: z.string().min(2).max(50),
