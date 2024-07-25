@@ -125,7 +125,7 @@ const SignInForm = (props: Props) => {
       </Form>
 
       <div className="flex flex-col md:flex-row p-2 font-light text-sm text-slate-600 space-x-2">
-        <Link href="/sign-up">Don't have an account?</Link>
+        <Link href="/sign-up">Don&apos;t have an account?</Link>
         <Link href="/password/reset">Forgot password?</Link>
       </div>
     </div>

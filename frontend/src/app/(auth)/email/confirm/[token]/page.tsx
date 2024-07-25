@@ -38,7 +38,7 @@ const ConfirmEmail = (props: Props) => {
     <div>
       {isPending ? (
         <p>
-          We're verifying your email &nbsp;&nbsp;
+          We&apos;re verifying your email &nbsp; &nbsp;
           <span>
             <img
               className="animate-spin h-5 w-5 mr-3 inline fill-primary-dark"
