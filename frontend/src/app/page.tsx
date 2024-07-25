@@ -19,7 +19,7 @@ type Props = {};
 const FeatureCard = (props: Props) => {
   return (
     <div className="flex flex-col px-12 items-center md:px-0 bg-transparent mt-8">
-      <div className="h-16 w-16 bg-black rounded-full"></div>
+      <div className="h-16 w-16 bg-dark-blue rounded-full"></div>
       <H2 className="text-center lg:text-4xl mt-4">Clicks Tracking Heatmaps</H2>
       <P className="text-center">
         Use our Intuitive form builder and embed It on your website or host It
@@ -32,7 +32,7 @@ const FeatureCard = (props: Props) => {
 const PricingCard = (props: Props) => {
   return (
     <div className="flex flex-col absolute bottom-0 h-[524px] w-[348px] py-16 px-2 items-center bg-transparent bg-white rounded">
-      <div className="h-16 w-16 bg-black rounded-full"></div>
+      <div className="h-16 w-16 bg-dark-blue rounded-full"></div>
       <H2 className="text-center lg:text-4xl mt-4">Clicks Tracking Heatmaps</H2>
       <P className="text-center">
         Use our Intuitive form builder and embed It on your website or host It
@@ -44,12 +44,12 @@ const PricingCard = (props: Props) => {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between bg-orangeaccent">
+    <main className="flex min-h-screen flex-col items-center justify-between">
       <GoogleTagManager gtmId="GTM-PSFF9DPG" />
       <Banner />
       <Navbar />
 
-      <section className="flex w-fullflex flex-col items-center align-middle pt-12 md:pt-24 lg:px-32">
+      <section className="flex w-fullflex flex-col items-center align-middle pt-12 md:pt-20 lg:px-32">
         <H1 className="text-center">
           Visualize User Behavior Using Heat maps.
         </H1>
@@ -63,14 +63,14 @@ export default function Home() {
 
         <div className="inline-flex items-center space-x-2 mt-6">
           <Link
-            href="#"
-            className="rounded-full bg-black border-black border-2 text-white py-3 px-8 md:px-12 font-bold text-xs md:text-sm hover:bg-white hover:text-black"
+            href="/sign-up"
+            className="rounded-full bg-dark-blue border-dark-blue border-2 text-white py-3 px-8 md:px-12 font-bold text-xs md:text-sm hover:bg-white hover:text-dark-blue"
           >
             Get Started
           </Link>
           <Link
-            href="#"
-            className="rounded-full border-black border-2 text-black py-3 px-8 md:px-12 font-bold text-xs md:text-sm hover:bg-black hover:text-white"
+            href="/sign-in"
+            className="rounded-full border-dark-blue border-2  py-3 px-8 md:px-12 font-bold text-xs md:text-sm hover:bg-dark-blue hover:text-white"
           >
             Sign In
           </Link>
@@ -88,7 +88,7 @@ export default function Home() {
         />
       </section>
 
-      <section className="flex flex-col items-center lg:flex-row justify-center space-x-8 bg-black py-4 md:py-8 w-full mt-12">
+      <section className="flex flex-col items-center lg:flex-row justify-center space-x-8 bg-dark-blue py-4 md:py-8 w-full mt-12">
         <H2 className="text-white text-center lg:text-start">
           Get your brand featured with
         </H2>
@@ -124,11 +124,11 @@ export default function Home() {
 
       <section className="h-96"></section>
 
-      <section className="flex flex-col h-24 relative items-center w-full bg-black ">
+      <section className="flex flex-col h-24 relative items-center w-full bg-dark-blue ">
         <PricingCard />
       </section>
 
-      <footer className="w-full flex flex-col items-center py-12 bg-black">
+      <footer className="w-full flex flex-col items-center py-12 bg-dark-blue">
         <div className="flex flex-col items-center">
           <Image
             src="/logo-contrast.svg"
@@ -138,29 +138,39 @@ export default function Home() {
             alt="heatedmaps logo"
           />
           <Link
-            href="#"
-            className="rounded-full mt-4 bg-white border-white border-2 text-black py-3 px-8 md:px-12 font-bold text-xs md:text-sm hover:bg-orangeaccent"
+            href="/sign-up"
+            className="rounded-full mt-4 bg-white border-white border-2  py-3 px-8 md:px-12 font-bold text-xs md:text-sm hover:bg-orangeaccent"
           >
             Get Started
           </Link>
         </div>
         <div className="flex flex-col md:flex-row md:px-24 items-center w-full justify-between">
           <nav className="py-8">
-            <ul className="flex items-center gap-4 list-none text-white">
+            <ul className="flex items-center gap-4 list-none">
               <li>
-                <Link href="#">Sign Up</Link>
+                <Link className="text-white" href="/sign-up">
+                  Sign Up
+                </Link>
               </li>
               <li>
-                <Link href="#">Sign In</Link>
+                <Link className="text-white" href="/sign-in">
+                  Sign In
+                </Link>
               </li>
               <li>
-                <Link href="#">Pricing</Link>
+                <Link className="text-white" href="#">
+                  Pricing
+                </Link>
               </li>
               <li>
-                <Link href="https://blog.heatedmaps.com">Blog</Link>
+                <Link className="text-white" href="https://blog.heatedmaps.com">
+                  Blog
+                </Link>
               </li>
               <li>
-                <Link href="#">About</Link>
+                <Link className="text-white" href="#">
+                  About
+                </Link>
               </li>
             </ul>
           </nav>

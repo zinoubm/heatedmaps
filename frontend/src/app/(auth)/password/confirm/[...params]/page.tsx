@@ -1,16 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { z } from "zod";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Separator } from "@/components/ui/separator";
-import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { GoogleLogin } from "@react-oauth/google";
-import { toast } from "sonner";
 import useAuth from "@/lib/api/useAuth";
-import Link from "next/link";
 
 import {
   Form,
@@ -20,53 +18,74 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import Link from "next/link";
 
 const formSchema = z.object({
-  email: z.string().email(),
-  password: z
+  new_password1: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters!" }),
+  new_password2: z
     .string()
     .min(8, { message: "Password must be at least 8 characters!" }),
 });
 
 type Props = {};
 
-const SignInForm = (props: Props) => {
+const ConfirmPasswordReset = (props: Props) => {
   const [isPending, setIsPending] = useState(false);
-  const { signIn, googleSignIn } = useAuth();
+  const [id, setId] = useState("");
+  const [token, setToken] = useState("");
+
+  const router = useRouter();
+  const { verifyPassowrdReset } = useAuth();
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      new_password1: "",
+      new_password2: "",
     },
   });
 
-  async function onSubmit(values: { email: string; password: string }) {
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    const parts = pathname.split("/").filter((part) => part);
+    const id = parts[parts.length - 2];
+    const token = parts[parts.length - 1];
+
+    setId(id);
+    setToken(token);
+  }, []);
+
+  useEffect(() => {
+    if (id && token) {
+      console.log("your id is", id);
+      console.log("your token is", token);
+    }
+  }, [token]);
+
+  async function onSubmit(values: {
+    new_password1: string;
+    new_password2: string;
+  }) {
+    // const user = await signIn({
+    //   email: values.email,
+    //   password: values.password,
+    // });
     setIsPending(true);
-    const response = await signIn({
-      email: values.email,
-      password: values.password,
-    });
+    await verifyPassowrdReset(
+      values.new_password1,
+      values.new_password2,
+      id,
+      token
+    );
     setIsPending(false);
   }
 
   return (
     <div className="flex flex-col w-full items-center">
-      <h1 className="font-bold text-2xl m-4 sm:mt-4 mt-24">Sign In</h1>
-      <GoogleLogin
-        onSuccess={async (credentialResponse) => {
-          if (credentialResponse.credential) {
-            googleSignIn(credentialResponse.credential);
-          } else {
-            toast.error(
-              "Something Went Wrong, Couldn't get Google credentials!"
-            );
-          }
-        }}
-        onError={() => {
-          toast.error("Something Went Wrong, Please Try Again!");
-        }}
-      />
+      <h1 className="font-bold text-2xl sm:mt-4 mt-24 mb-4">Reset Password</h1>
+      <p>Please enter the new password.</p>
 
       <Separator className="w-full my-4" />
 
@@ -77,12 +96,12 @@ const SignInForm = (props: Props) => {
         >
           <FormField
             control={form.control}
-            name="email"
+            name="new_password1"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>New Password</FormLabel>
                 <FormControl>
-                  <Input type="text" placeholder="Email" {...field} />
+                  <Input type="password" placeholder="Password" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -91,10 +110,10 @@ const SignInForm = (props: Props) => {
 
           <FormField
             control={form.control}
-            name="password"
+            name="new_password2"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>Confirm New Password</FormLabel>
                 <FormControl>
                   <Input type="password" placeholder="Password" {...field} />
                 </FormControl>
@@ -118,18 +137,16 @@ const SignInForm = (props: Props) => {
                 </span>
               </p>
             ) : (
-              "Sign In"
+              "Reset password"
             )}
           </Button>
         </form>
       </Form>
-
-      <div className="flex flex-col md:flex-row p-2 font-light text-sm text-slate-600 space-x-2">
-        <Link href="/sign-up">Don't have an account?</Link>
-        <Link href="/password/reset">Forgot password?</Link>
+      <div className="p-2 font-light text-sm text-slate-600 space-x-2">
+        <Link href="/sign-in">Back to Sign In &rarr;</Link>
       </div>
     </div>
   );
 };
 
-export default SignInForm;
+export default ConfirmPasswordReset;

@@ -23,7 +23,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 INSTALLED_APPS = [
     "django.contrib.sites",
@@ -41,9 +40,9 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "allauth.socialaccount.providers.google",
+    # "allauth.socialaccount.providers.google",
     "dj_rest_auth",
-    # "dj_rest_auth.registration",
+    "dj_rest_auth.registration",
     "django_celery_beat",
     "heatedmaps",
     "heatedmaps.common",
@@ -64,11 +63,11 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_HEADERS = False
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
+    "http://localhost:3000",
 ]
 
 BACKEND_DOMAIN = "http://localhost:8000"
-FRONTEND_DOMAIN = "http://localhost:8080"
+FRONTEND_DOMAIN = "http://localhost:3000"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -147,7 +146,6 @@ CELERY_TIMEZONE = "Europe/London"
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 CELERY_TASK_SERIALIZER = "json"
 
-ACCOUNT_EMAIL_VERIFICATION = "none"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
@@ -159,6 +157,11 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     # "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
 }
+
+# AUTHENTICATION_BACKENDS = (
+#    "django.contrib.auth.backends.ModelBackend",
+# #    "allauth.account.auth_backends.AuthenticationBackend"
+# )
 
 AUTH_USER_MODEL = "authentication.User"
 
@@ -175,10 +178,21 @@ GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
 STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_CONFIRM_REDIRECT_BASE_URL = "http://localhost:3000/email/confirm/"
+PASSWORD_RESET_CONFIRM_REDIRECT_BASE_URL = (
+    "http://localhost:3000/password/confirm/"
+)
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+
+# ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = "http://localhost:3000/sing-in/"
+# LOGIN_URL = "http://localhost:3000/sing-in/"
 
 MEDIA_URL = "/media/"

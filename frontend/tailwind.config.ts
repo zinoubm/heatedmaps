@@ -19,6 +19,11 @@ const config = {
     },
     extend: {
       colors: {
+        "dark-blue": "var(--dark-blue)",
+        "light-blue": "var(--light-blue)",
+        "light-green": "var(--light-green)",
+        "light-yellow": "var(--light-yellow)",
+        "light-orange": "var(--light-orange)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -28,7 +33,6 @@ const config = {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
-        orangeaccent: "#FFF8EE",
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",

@@ -7,13 +7,15 @@ type Props = {};
 const Navbar = async (props: Props) => {
   return (
     <header className="sticky top-0 w-full py-8 px-4 lg:px-16 backdrop-blur-lg z-[100] flex items-center justify-between">
-      <Image
-        src="/logo.svg"
-        width={198}
-        height={30}
-        style={{ height: "auto" }}
-        alt="heatedmaps logo"
-      />
+      <Link href="/">
+        <Image
+          src="/logo.svg"
+          width={198}
+          height={30}
+          style={{ height: "auto" }}
+          alt="heatedmaps logo"
+        />
+      </Link>
       <nav className="absolute left-[50%] top-[50%] transform translate-x-[-50%] translate-y-[-50%] hidden md:block">
         <ul className="flex items-center gap-4 list-none">
           <li>
@@ -23,19 +25,25 @@ const Navbar = async (props: Props) => {
             <Link href="#">Pricing</Link>
           </li>
           <li>
+            <Link href="https://blog.heatedmaps.com">Blog</Link>
+          </li>
+          <li>
             <Link href="#">About</Link>
           </li>
         </ul>
       </nav>
       <aside className="flex items-center gap-4">
         <Link
-          href="#"
-          className="rounded-full border-black border-2 text-black py-2 px-4 md:px-8 font-bold text-xs md:text-sm hover:bg-black hover:text-white"
+          href="/sign-up"
+          className="rounded-full border-dark-blue border-2 text-dark-blue py-2 px-4 md:px-8 font-bold text-xs md:text-sm hover:bg-dark-blue hover:text-white"
         >
           Get Started
         </Link>
         {false && (
-          <Link href="#" className="rounded-full bg-black text-white py-4 px-8">
+          <Link
+            href="#"
+            className="rounded-full bg-dark-blue text-white py-4 px-8"
+          >
             Dashboard
           </Link>
         )}

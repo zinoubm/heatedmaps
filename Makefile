@@ -4,6 +4,9 @@ setup:
 up:
 	docker compose up
 
+up_d:
+	docker compose up -d
+
 terminal: 
 	docker exec -it heatedmaps_dev-backend-1 /bin/bash
 

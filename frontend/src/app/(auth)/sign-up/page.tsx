@@ -1,7 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { z } from "zod";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import useAuth from "@/lib/api/useAuth";
+
+import { GoogleLogin } from "@react-oauth/google";
+import { Separator } from "@/components/ui/separator";
+import { toast } from "sonner";
 
 import {
   Form,
@@ -11,14 +21,6 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-
-import { GoogleLogin } from "@react-oauth/google";
-import { Separator } from "@/components/ui/separator";
 
 export const formSchema = z
   .object({
@@ -40,10 +42,8 @@ export const formSchema = z
 type Props = {};
 
 const SignUpForm = (props: Props) => {
-  const isPending = false; //todo
-
-  // todo
-  // const { signUp, googleSignIn } = useAuth();
+  const [isPending, setIsPending] = useState(false);
+  const { signUp, googleSignIn } = useAuth();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -63,30 +63,36 @@ const SignUpForm = (props: Props) => {
     password1: string;
     password2: string;
   }) {
-    // todo
-    // const user = await signUp({
-    //   first_name: values.firstName,
-    //   last_name: values.lastName,
-    //   email: values.email,
-    //   password1: values.password1,
-    //   password2: values.password2,
-    // });
+    setIsPending(true);
+    const response = await signUp({
+      first_name: values.firstName,
+      last_name: values.lastName,
+      email: values.email,
+      password1: values.password1,
+      password2: values.password2,
+    });
+
+    setIsPending(false);
   }
+
   return (
     <div className="flex flex-col w-full items-center">
       <h1 className="font-bold text-2xl m-4 sm:mt-4 mt-24">Sign Up</h1>
 
-      {/* todo: wire up google */}
-      {/* <GoogleLogin
+      <GoogleLogin
         onSuccess={async (credentialResponse) => {
-          googleSignIn(credentialResponse.credential);
+          if (credentialResponse.credential) {
+            googleSignIn(credentialResponse.credential);
+          } else {
+            toast.error(
+              "Something Went Wrong, Couldn't get Google credentials!"
+            );
+          }
         }}
         onError={() => {
           toast.error("Something Went Wrong, Please Try Again!");
         }}
-      /> */}
-
-      <p>google login</p>
+      />
 
       <Separator className="w-full my-4" />
 
@@ -167,16 +173,16 @@ const SignUpForm = (props: Props) => {
           />
 
           <Button
-            className="bg-black focus:bg-primary-semi-dark focus:text-white hover:bg-primary-semi-dark"
+            className="bg-dark-blue text-white focus:bg-primary-semi-dark focus:text-white hover:bg-primary-semi-dark"
             type="submit"
           >
             {isPending ? (
-              <p>
+              <p className="text-white">
                 Loading &nbsp;&nbsp;
                 <span>
                   <img
                     className="animate-spin h-5 w-5 mr-3 inline fill-primary-dark"
-                    src="assets/cursor.svg"
+                    src="/logo-icon.svg"
                   />
                 </span>
               </p>

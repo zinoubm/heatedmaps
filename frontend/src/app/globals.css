@@ -4,8 +4,12 @@
 
 @layer base {
   :root {
+    --dark-blue: #071144;
+    --light-blue: #3bc3d1;
+    --light-green: #d8ffe2;
+    --light-yellow: #fedc78;
+    --light-orange: #fa6501;
     --background: 0 0% 100%;
-    --orange-accent: 36 7% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -63,6 +67,7 @@
 @layer base {
   * {
     @apply border-border;
+    @apply text-dark-blue;
   }
   body {
     @apply bg-background text-foreground;
