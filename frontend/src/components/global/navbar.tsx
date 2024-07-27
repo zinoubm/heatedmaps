@@ -1,16 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import LinkButton from "./linkButton";
 
 type Props = {};
 
 const Navbar = async (props: Props) => {
   return (
-    <header className="sticky top-0 w-full py-8 px-4 lg:px-16 backdrop-blur-lg z-[100] flex items-center justify-between">
+    <header className="sticky top-0 w-full py-8 px-4 lg:px-36 backdrop-blur-lg z-[100] flex items-center justify-between">
       <Link href="/">
         <Image
           src="/logo.svg"
-          width={198}
+          width={168}
           height={30}
           style={{ height: "auto" }}
           alt="heatedmaps logo"
@@ -33,12 +34,15 @@ const Navbar = async (props: Props) => {
         </ul>
       </nav>
       <aside className="flex items-center gap-4">
-        <Link
+        {/* <Link
           href="/sign-up"
-          className="rounded-full border-dark-blue border-2 text-dark-blue py-2 px-4 md:px-8 font-bold text-xs md:text-sm hover:bg-dark-blue hover:text-white"
+          className="rounded-md bg-light-blue text-dark-blue py-2 px-4 md:px-8 font-bold text-xs md:text-sm hover:bg-dark-blue hover:text-white"
         >
           Get Started
-        </Link>
+        </Link> */}
+        <LinkButton href="/sign-up" variant={"default"}>
+          Get Started
+        </LinkButton>
         {false && (
           <Link
             href="#"

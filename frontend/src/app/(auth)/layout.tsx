@@ -19,7 +19,7 @@ const Layout = ({ children }: Props) => {
         />
       </Link>
       <div
-        className="flex flex-col items-center w-full md:w-3/5 lg:w-2/5 py-12 px-8 bg-white rounded-xl my-12 border-2 border-dark-blue"
+        className="flex flex-col items-center w-full md:w-3/5 lg:w-2/6 py-12 px-8 bg-white rounded-xl my-12 border-2 border-dark-blue"
         style={{ boxShadow: "16px 16px" }}
       >
         {children}

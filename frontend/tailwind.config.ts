@@ -24,6 +24,7 @@ const config = {
         "light-green": "var(--light-green)",
         "light-yellow": "var(--light-yellow)",
         "light-orange": "var(--light-orange)",
+        "vivid-orange": "var(--light-orange)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

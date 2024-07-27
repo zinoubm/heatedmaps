@@ -52,7 +52,7 @@ const SignInForm = (props: Props) => {
 
   return (
     <div className="flex flex-col w-full items-center">
-      <h1 className="font-bold text-2xl m-4 sm:mt-4 mt-24">Sign In</h1>
+      <h1 className="font-bold text-2xl">Sign In</h1>
       <GoogleLogin
         onSuccess={async (credentialResponse) => {
           if (credentialResponse.credential) {
@@ -104,7 +104,8 @@ const SignInForm = (props: Props) => {
           />
 
           <Button
-            className="bg-dark-blue focus:bg-primary-semi-dark focus:text-white hover:bg-primary-semi-dark"
+            className="focus:bg-primary-semi-dark focus:text-white my-2"
+            variant="cta"
             type="submit"
           >
             {isPending ? (

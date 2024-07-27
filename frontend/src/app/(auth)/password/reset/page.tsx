@@ -55,7 +55,7 @@ const ResetPasswordForm = (props: Props) => {
 
   return (
     <div className="flex flex-col w-full items-center">
-      <h1 className="font-bold text-2xl sm:mt-4 mt-24 mb-4">Reset Password</h1>
+      <h1 className="font-bold text-2xl">Reset Password</h1>
       <p>Please enter your email to recover your account.</p>
 
       <Separator className="w-full my-4" />
@@ -80,7 +80,8 @@ const ResetPasswordForm = (props: Props) => {
           />
 
           <Button
-            className="bg-dark-blue focus:bg-primary-semi-dark focus:text-white hover:bg-primary-semi-dark"
+            className="rounded-md focus:text-white my-2"
+            variant="cta"
             disabled={isDisabled}
             type="submit"
           >

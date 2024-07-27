@@ -13,13 +13,14 @@ import {
 } from "@/components/ui/card";
 import { GoogleTagManager } from "@next/third-parties/google";
 import Banner from "@/components/global/banner";
+import LinkButton from "@/components/global/linkButton";
 
 type Props = {};
 
 const FeatureCard = (props: Props) => {
   return (
     <div className="flex flex-col px-12 items-center md:px-0 bg-transparent mt-8">
-      <div className="h-16 w-16 bg-dark-blue rounded-full"></div>
+      <div className="h-16 w-16 bg-dark-blue rounded-md"></div>
       <H2 className="text-center lg:text-4xl mt-4">Clicks Tracking Heatmaps</H2>
       <P className="text-center">
         Use our Intuitive form builder and embed It on your website or host It
@@ -32,7 +33,7 @@ const FeatureCard = (props: Props) => {
 const PricingCard = (props: Props) => {
   return (
     <div className="flex flex-col absolute bottom-0 h-[524px] w-[348px] py-16 px-2 items-center bg-transparent bg-white rounded">
-      <div className="h-16 w-16 bg-dark-blue rounded-full"></div>
+      <div className="h-16 w-16 bg-dark-blue rounded-md"></div>
       <H2 className="text-center lg:text-4xl mt-4">Clicks Tracking Heatmaps</H2>
       <P className="text-center">
         Use our Intuitive form builder and embed It on your website or host It
@@ -62,18 +63,12 @@ export default function Home() {
         </div>
 
         <div className="inline-flex items-center space-x-2 mt-6">
-          <Link
-            href="/sign-up"
-            className="rounded-full bg-dark-blue border-dark-blue border-2 text-white py-3 px-8 md:px-12 font-bold text-xs md:text-sm hover:bg-white hover:text-dark-blue"
-          >
-            Get Started
-          </Link>
-          <Link
-            href="/sign-in"
-            className="rounded-full border-dark-blue border-2  py-3 px-8 md:px-12 font-bold text-xs md:text-sm hover:bg-dark-blue hover:text-white"
-          >
+          <LinkButton href="/sign-in" variant={"default"}>
             Sign In
-          </Link>
+          </LinkButton>
+          <LinkButton href="/sign-up" variant={"cta"}>
+            Get Starteds
+          </LinkButton>
         </div>
 
         <div className="mt-12"></div>
@@ -137,12 +132,13 @@ export default function Home() {
             style={{ height: "auto" }}
             alt="heatedmaps logo"
           />
-          <Link
+          <LinkButton
+            className="hover:bg-light-orange my-2"
             href="/sign-up"
-            className="rounded-full mt-4 bg-white border-white border-2  py-3 px-8 md:px-12 font-bold text-xs md:text-sm hover:bg-orangeaccent"
+            variant={"default"}
           >
             Get Started
-          </Link>
+          </LinkButton>
         </div>
         <div className="flex flex-col md:flex-row md:px-24 items-center w-full justify-between">
           <nav className="py-8">
