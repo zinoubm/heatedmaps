@@ -11,9 +11,9 @@ const Navbar = async (props: Props) => {
       <Link href="/">
         <Image
           src="/logo.svg"
-          width={168}
-          height={30}
-          style={{ height: "auto" }}
+          width={0}
+          height={0}
+          style={{ width: "168px", height: "auto" }}
           alt="heatedmaps logo"
         />
       </Link>

@@ -1,1 +1,2 @@
-from heatedmaps.views.product import ProductListCreateAPIView
+from .product import ProductListCreateAPIView
+from .site import SiteListCreateAPIView

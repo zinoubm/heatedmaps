@@ -3,17 +3,14 @@ from tests.fixtures import api_client
 
 from tests.factories import UserFactory, ProductFactory
 
-
-@pytest.mark.skip(reason="This unit Is just a reference")
+@pytest.mark.skip(reason="Not Implemented")
 @pytest.mark.django_db
 class TestProductListCreateAPIView:
 
     def setup_method(self, method):
-        self.url = "http://localhost:8000/api/products/"
-        self.seller = UserFactory()
-        self.seller_product = ProductFactory(seller=self.seller)
+        self.url = "http://localhost:8000/api/i/"
 
-    def test_create_product(self, api_client):
+    def test_injestion(self, api_client):
         data = {
             "title": "gaming mouse",
             "description": "fast gaming mouse",

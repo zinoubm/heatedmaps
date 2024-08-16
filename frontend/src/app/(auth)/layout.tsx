@@ -12,9 +12,9 @@ const Layout = ({ children }: Props) => {
       <Link href="/">
         <Image
           src="/logo.svg"
-          width={198}
-          height={30}
-          style={{ height: "auto" }}
+          width={0}
+          height={0}
+          style={{ width: "198px", height: "auto" }}
           alt="heatedmaps logo"
         />
       </Link>

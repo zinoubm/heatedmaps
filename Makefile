@@ -22,6 +22,12 @@ flush:
 db:
 	psql -h localhost -p 5432 -d heatedmaps_dev_db -U heatedmaps_dev_db_user -W
 
+make_migrations:
+	docker exec -it heatedmaps_dev-backend-1 python manage.py makemigrations
+
+migrate:
+	docker exec -it heatedmaps_dev-backend-1 python manage.py migrate
+
 down:
 	docker compose down
 

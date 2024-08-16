@@ -3,9 +3,11 @@ import axios from "./axios";
 import useToken from "./useToken";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useAuthStore } from "@/context/authStore";
 
 const useAuth = () => {
-  const { setToken, getToken } = useToken();
+  const { setToken, token: authToken } = useAuthStore();
+
   const router = useRouter();
 
   const signUp = async (user: {
@@ -94,11 +96,13 @@ const useAuth = () => {
         }
       );
 
-      // console.log(response.data.key);
+      if (response.status == 200) {
+        toast("Sign In was succeful.");
 
-      // setToken(response.data.key);
-      // navigate("/");
-      // return response.data;
+        setToken(response.data.key);
+        router.push("/setup");
+      }
+
       return response;
     } catch (err) {
       toast("Something went wrong, please try again!");
@@ -120,13 +124,15 @@ const useAuth = () => {
           },
         }
       );
+
       if (response.status == 200) {
         toast("Sign In was succeful.");
-        console.log(response.data);
 
-        // setToken(response.data.key);
-        // navigate("/");
+        setToken(response.data.key);
+        router.push("/setup");
       }
+
+      return response;
     } catch (error) {
       toast.error("wrong email or password!");
     }
@@ -198,25 +204,28 @@ const useAuth = () => {
     }
   };
 
-  //   const getCurrentUser = async () => {
-  //     try {
-  //       const token = getToken();
+  const getCurrentUser = async () => {
+    try {
+      console.log("auth token", authToken);
 
-  //       const response = await axios.get("/auth/user/", {
-  //         headers: {
-  //           accept: "application/json",
-  //           Authorization: "Token " + token,
-  //         },
-  //       });
+      const response = await axios.get("/auth/user/", {
+        headers: {
+          accept: "application/json",
+          Authorization: "Token " + authToken,
+        },
+      });
 
-  //       return response.data;
-  //     } catch (err) {
-  //       if (err.response.status === 401) return null;
+      return response.data;
+    } catch (err) {
+      const axiosError = err as AxiosError;
 
-  //       console.log("Something went wrong!", err);
-  //       // if (err.response.status === 401) navigate("/sign-in");
-  //     }
-  //   };
+      if (axiosError.response?.status === 401) {
+        toast.error("Authentication expired, please sign In again!");
+        router.push("/sign-in");
+        return null;
+      }
+    }
+  };
 
   //   const updateUserInfo = async (user) => {
   //     //! this function sends the request in a multipart/form-data
@@ -252,7 +261,7 @@ const useAuth = () => {
     resetPassword,
     verifyPassowrdReset,
     googleSignIn,
-    // getCurrentUser,
+    getCurrentUser,
     // updateUserInfo,
   };
 };

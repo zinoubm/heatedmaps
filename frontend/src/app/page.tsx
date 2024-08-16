@@ -27,9 +27,9 @@ const FeatureCard = ({ icon, title, description }: Props) => {
       <Image
         src={icon}
         alt="clicks"
-        width={124}
-        height={30}
-        style={{ height: "auto" }}
+        width={0}
+        height={0}
+        style={{ width: "124px", height: "auto" }}
       />
       <H2 className="text-center lg:text-4xl mt-4">{title}</H2>
       <P className="text-center">{description}</P>
@@ -100,9 +100,9 @@ export default function Home() {
         </H2>
         <Image
           src="/logo-contrast.svg"
-          width={260}
-          height={30}
-          style={{ height: "auto" }}
+          width={0}
+          height={0}
+          style={{ width: "260px", height: "auto" }}
           alt="heatedmaps logo"
         />
       </section>
@@ -125,7 +125,7 @@ export default function Home() {
           />
           <FeatureCard
             icon="/features/recordings.svg"
-            title="User Session Recordings"
+            title="Mouse Movements Tracking"
             description="Respondily saves you time by Instantly responding to customer questions, Automate your customer service and Improve customer retention."
           />
         </div>
@@ -147,9 +147,9 @@ export default function Home() {
         <div className="flex flex-col items-center">
           <Image
             src="/logo-contrast.svg"
-            width={260}
-            height={30}
-            style={{ height: "auto" }}
+            width={0}
+            height={0}
+            style={{ width: "260px", height: "auto" }}
             alt="heatedmaps logo"
           />
           <LinkButton

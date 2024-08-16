@@ -6,6 +6,7 @@ import { Toaster } from "sonner";
 
 import "./globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import HydrationProvider from "@/providers/hydration-provider";
 
 const font = Inter({ subsets: ["latin"] });
 
@@ -22,18 +23,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <GoogleOAuthProvider
-            clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}
+        <HydrationProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
           >
-            {children}
-          </GoogleOAuthProvider>
-        </ThemeProvider>
+            <GoogleOAuthProvider
+              clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}
+            >
+              {children}
+            </GoogleOAuthProvider>
+          </ThemeProvider>
+        </HydrationProvider>
+
         <Toaster richColors position="top-center" />
       </body>
     </html>
