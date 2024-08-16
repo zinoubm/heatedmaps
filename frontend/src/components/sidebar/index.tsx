@@ -54,7 +54,7 @@ const MenuOptions = (props: Props) => {
 
   return (
     <>
-      {isToggle && (
+      {/* {isToggle && (
         <nav className="bg-dark-blue h-screen w-1/5 flex flex-col gap-4 py-8 px-8">
           <span>
             <Image
@@ -100,7 +100,7 @@ const MenuOptions = (props: Props) => {
             <Button>User</Button>
           </ul>
         </nav>
-      )}
+      )} */}
     </>
   );
 };
