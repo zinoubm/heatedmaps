@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { useAuthStore } from "@/context/authStore";
 
 const useAuth = () => {
-  const { setToken, token: authToken } = useAuthStore();
+  const { setToken, token: authToken, reset } = useAuthStore();
 
   const router = useRouter();
 
@@ -206,8 +206,6 @@ const useAuth = () => {
 
   const getCurrentUser = async () => {
     try {
-      console.log("auth token", authToken);
-
       const response = await axios.get("/auth/user/", {
         headers: {
           accept: "application/json",
@@ -221,6 +219,7 @@ const useAuth = () => {
 
       if (axiosError.response?.status === 401) {
         toast.error("Authentication expired, please sign In again!");
+        reset();
         router.push("/sign-in");
         return null;
       }
@@ -254,6 +253,32 @@ const useAuth = () => {
   //     }
   //   };
 
+  const signOut = async () => {
+    try {
+      const response = await axios.post("/auth/logout/", "", {
+        headers: {
+          accept: "application/json",
+          Authorization: "Token " + authToken,
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
+
+      reset();
+      router.push("/sign-in");
+
+      return response.data;
+    } catch (err) {
+      const axiosError = err as AxiosError;
+
+      if (axiosError.response?.status === 401) {
+        toast.error("Authentication expired, please sign In again!");
+        reset();
+        router.push("/sign-in");
+        return null;
+      }
+    }
+  };
+
   return {
     signUp,
     verifyEmail,
@@ -263,6 +288,7 @@ const useAuth = () => {
     googleSignIn,
     getCurrentUser,
     // updateUserInfo,
+    signOut,
   };
 };
 

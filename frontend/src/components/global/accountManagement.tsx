@@ -23,21 +23,18 @@ const getInitials = (
 };
 
 const AccountManagement = () => {
-  const { user, setUser, reset } = useAuthStore();
-  const { getCurrentUser } = useAuth();
+  const { user, setUser } = useAuthStore();
+  const { getCurrentUser, signOut } = useAuth();
   const router = useRouter();
 
-  const logout = () => {
-    reset();
-    router.push("/sign-in");
+  const signOutOnClick = async () => {
+    console.log("signin out");
+    await signOut();
   };
 
   useEffect(() => {
     const getCurrentUserEffect = async () => {
-      const effectUser = await getCurrentUser();
-      console.log(effectUser);
-
-      setUser(effectUser);
+      setUser(await getCurrentUser());
     };
 
     getCurrentUserEffect();
@@ -65,7 +62,7 @@ const AccountManagement = () => {
 
           <Button
             className="bg-dark-blue hover:bg-light-blue hover:text-dark-blue"
-            onClick={logout}
+            onClick={signOutOnClick}
           >
             Logout
           </Button>
