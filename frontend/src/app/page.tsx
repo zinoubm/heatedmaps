@@ -26,7 +26,7 @@ const FeatureCard = ({ icon, title, description }: Props) => {
     <div className="flex flex-col w-full md:w-80 xl:w-96 items-center bg-transparent mt-8">
       <Image
         src={icon}
-        alt="clicks"
+        alt="feature-image"
         width={0}
         height={0}
         style={{ width: "124px", height: "auto" }}
@@ -42,7 +42,7 @@ const PricingCard = ({ icon, title, description }: Props) => {
     <div className="flex flex-col absolute bottom-0 h-[524px] w-[348px] py-16 px-2 items-center bg-transparent bg-white rounded">
       <Image
         src={icon}
-        alt="product-screenshot"
+        alt="pricing-image"
         width={0}
         height={0}
         sizes="100vw"
@@ -62,7 +62,7 @@ export default function Home() {
       <Navbar />
 
       <section className="flex w-fullflex flex-col items-center align-middle pt-12 md:pt-20 lg:px-32">
-        <H1 className="text-center">
+        <H1 className="text-center text-4xl lg:text-8xl">
           Visualize User Behavior Using Heat maps.
         </H1>
 
@@ -85,8 +85,9 @@ export default function Home() {
         <div className="mt-12"></div>
 
         <Image
-          src="/screenshot.png"
-          alt="product-screenshot"
+          className="relative bottom-12"
+          src="/hero-image.png"
+          alt="hero-image"
           width={0}
           height={0}
           sizes="100vw"
@@ -94,7 +95,7 @@ export default function Home() {
         />
       </section>
 
-      <section className="flex flex-col items-center lg:flex-row justify-center space-x-8 bg-dark-blue py-4 md:py-8 w-full mt-12">
+      <section className="flex flex-col items-center lg:flex-row justify-center space-x-8 bg-primary-dark py-4 md:py-8 w-full mt-12">
         <H2 className="text-white text-center lg:text-start">
           Get your brand featured with
         </H2>
@@ -139,11 +140,11 @@ export default function Home() {
 
       <section className="h-96"></section>
 
-      <section className="flex flex-col h-24 relative items-center w-full bg-dark-blue ">
+      <section className="flex flex-col h-24 relative items-center w-full bg-primary-dark ">
         <PricingCard icon={""} title={""} description={""} />
       </section>
 
-      <footer className="w-full flex flex-col items-center py-12 bg-dark-blue">
+      <footer className="w-full flex flex-col items-center py-12 bg-primary-dark">
         <div className="flex flex-col items-center">
           <Image
             src="/logo-contrast.svg"

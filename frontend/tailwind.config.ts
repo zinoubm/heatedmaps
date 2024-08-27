@@ -19,6 +19,10 @@ const config = {
     },
     extend: {
       colors: {
+        "primary-dark": "black",
+        "primary-light": "var(--light-blue)",
+        "primary-semi-light": "var(--light-blue)",
+        "primary-accent": "var(--light-orange)",
         "dark-blue": "var(--dark-blue)",
         "light-blue": "var(--light-blue)",
         "light-green": "var(--light-green)",

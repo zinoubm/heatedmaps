@@ -61,8 +61,8 @@ const SideBarLink = ({ href, label }: SideBarLinkProps) => {
       className={`w-full block rounded-md text-left font-normal px-8 py-3 text-base ${
         !isActive && "text-white"
       } ${
-        isActive && "text-dark-blue bg-light-blue"
-      } hover:bg-light-blue transition-colors duration-5 ease-out hover:text-dark-blue`}
+        isActive && "text-primary-dark bg-light-blue"
+      } transition-colors duration-5 ease-out hover:text-primary-accent hover:bg-light-blue/25`}
       href={href}
     >
       {label}

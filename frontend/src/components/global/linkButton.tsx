@@ -22,7 +22,7 @@ const LinkButton = ({ href, variant, className, children }: Props) => {
     <Link
       href={href}
       className={cn(
-        `rounded-md bg-light-blue ${defaultTextColor} ${defaultColor} ${defaultDropShadow} py-3 px-4 md:px-8 font-bold text-xs md:text-sm hover:bg-dark-blue hover:text-white hover:filter-none`,
+        `rounded-md bg-light-blue ${defaultTextColor} ${defaultColor} ${defaultDropShadow} py-3 px-4 md:px-8 font-bold text-xs md:text-sm hover:bg-primary-dark hover:text-white hover:filter-none`,
         className
       )}
     >
