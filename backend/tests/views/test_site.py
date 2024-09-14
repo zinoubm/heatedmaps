@@ -14,7 +14,7 @@ class TestSiteListCreateAPIView:
     def test_create_site(self, api_client):
         data = {
             # owner will be figured out by backend
-            "name": "My Site",
+            "name": "mysite",
             "url": "https://mysite.com",
             "description": "A dummy site for testing",
         }
@@ -37,3 +37,12 @@ class TestSiteListCreateAPIView:
         assert response.status_code == 200
         assert sites, "Sites list Is empty!"
         assert all(site["owner"] == self.owner.id for site in sites)
+
+    def test_retrieve_site(self, api_client):
+        api_client.force_authenticate(user=self.owner)
+        response = api_client.get(self.url + str(self.site.id) + "/")
+
+        site = response.data
+
+        assert response.status_code == 200
+        assert site["url"] == self.site.url

@@ -18,6 +18,7 @@ django-cloudinary-storage==0.3.0
 urllib3==2.2.1
 django-filter==24.2
 stripe==9.6.0
+gunicorn==21.2.0
 
 black==24.2.0 ; extra == 'dev'
 mypy==1.9.0 ; extra == 'dev'

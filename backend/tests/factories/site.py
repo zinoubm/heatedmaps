@@ -9,8 +9,9 @@ from .user import UserFactory
 class SiteFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Site
-        django_get_or_create = ("owner", "name", "url")
+        django_get_or_create = ("owner", "name", "url", "description")
 
     owner = factory.SubFactory(UserFactory)
-    name = "My Site"
-    url = "https://mysite.com"
+    name = factory.Faker("name")
+    url = factory.Faker("url")
+    description = "Some fake description for testing."

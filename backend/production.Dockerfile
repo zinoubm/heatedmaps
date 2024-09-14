@@ -1,17 +1,23 @@
-FROM heatedmaps_webapp:dev as builder
+FROM python:3.11.7-slim-bookworm
 
-FROM python:3.11.5-alpine3.18
-
-COPY --from=builder /app /app
+RUN apt-get update && \
+    apt-get install -y gcc curl ca-certificates netcat-openbsd procps postgresql-client-15 python3-dev libpq-dev
 
 WORKDIR /app
 
-RUN apk update && \
-    apk add --no-cache ca-certificates postgresql-libs curl netcat-openbsd jpeg-dev postgresql-client && \
-    apk add --virtual .build-deps gcc musl-dev postgresql-dev git make libffi-dev zlib-dev
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-RUN rm -rf /root/.cache && \
-    apk --purge del .build-deps && \
-    rm -rf node_modules
+RUN pip install --upgrade pip
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
+    
+COPY . .
 
-CMD ["pdm", "run", "gunicorn", "--workers", "4", "--bind", "0.0.0.0:8000", "heatedmaps.wsgi:application"]
+COPY ./deploy.sh /deploy.sh
+RUN chmod +x /deploy.sh
+
+EXPOSE 8000
+CMD /deploy.sh
+
+

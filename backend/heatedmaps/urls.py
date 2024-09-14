@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
-from .views import ProductListCreateAPIView, SiteListCreateAPIView
+from .views import ProductListCreateAPIView, SiteListCreateAPIView, SiteRetrieveAPIView
 
 urlpatterns = [
     path("api/auth/", include("authentication.urls")),
@@ -21,6 +21,11 @@ urlpatterns = [
         "api/sites/",
         SiteListCreateAPIView.as_view(),
         name="sites-list",
+    ),
+    path(
+        "api/sites/<int:pk>/",
+        SiteRetrieveAPIView.as_view(),
+        name="sites-details",
     ),
     path(
         "api/products/",

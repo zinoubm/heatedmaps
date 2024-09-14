@@ -4,6 +4,7 @@ import useToken from "./useToken";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useAuthStore } from "@/context/authStore";
+import { isNull } from "util";
 
 const useAuth = () => {
   const { setToken, token: authToken, reset } = useAuthStore();
@@ -269,14 +270,27 @@ const useAuth = () => {
       return response.data;
     } catch (err) {
       const axiosError = err as AxiosError;
+      const axiosStatus = axiosError.response?.status;
 
-      if (axiosError.response?.status === 401) {
-        toast.error("Authentication expired, please sign In again!");
+      if (axiosStatus === 403 || axiosStatus === 401) {
+        toast.error("Authentication has expired, please sign In!");
         reset();
         router.push("/sign-in");
         return null;
       }
     }
+  };
+
+  const handleUnauthenticated = async (axiosError: AxiosError) => {
+    const axiosStatus = axiosError.response?.status;
+
+    if (axiosStatus === 403 || axiosStatus === 401) {
+      toast.info("Authentication has expired, please sign In.");
+      await signOut();
+      return true;
+    }
+
+    return false;
   };
 
   return {
@@ -289,6 +303,7 @@ const useAuth = () => {
     getCurrentUser,
     // updateUserInfo,
     signOut,
+    handleUnauthenticated,
   };
 };
 

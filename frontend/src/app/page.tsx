@@ -40,14 +40,14 @@ const FeatureCard = ({ icon, title, description }: Props) => {
 const PricingCard = ({ icon, title, description }: Props) => {
   return (
     <div className="flex flex-col absolute bottom-0 h-[524px] w-[348px] py-16 px-2 items-center bg-transparent bg-white rounded">
-      <Image
+      {/* <Image
         src={icon}
         alt="pricing-image"
         width={0}
         height={0}
         sizes="100vw"
         style={{ width: "100%", height: "auto" }}
-      />
+      /> */}
       <H2 className="text-center lg:text-4xl mt-4">{title}</H2>
       <P className="text-center">{description}</P>
     </div>

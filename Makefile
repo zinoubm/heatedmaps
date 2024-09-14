@@ -7,6 +7,9 @@ up:
 up_d:
 	docker compose up -d
 
+up_sim:
+	docker compose -f poduction-sim.docker-compose.yml up --build
+
 terminal: 
 	docker exec -it heatedmaps_dev-backend-1 /bin/bash
 
