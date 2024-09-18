@@ -47,5 +47,5 @@ unit_test:
 
 # must remove before pushing
 load_terrafrom_vars:
-	export $(cat terrafrom.env | xargs)
+	export $(cat terraform.env | xargs)
 
