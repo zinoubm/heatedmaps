@@ -1,7 +1,7 @@
 # service variables
 variable "NAMESPACE" {
   description = "NAMESPACE for resource names"
-  default     = "openpdfai"
+  default     = "heatedmaps"
   type        = string
 }
 
