@@ -28,7 +28,7 @@ jobs:
       - name: Build, tag, and push backend Image to Amazon ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: heatedmaps/backend
+          ECR_REPOSITORY: production/backend
           IMAGE_TAG: latest
 
         run: |
