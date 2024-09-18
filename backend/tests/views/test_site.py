@@ -15,7 +15,7 @@ class TestSiteListCreateAPIView:
         data = {
             # owner will be figured out by backend
             "name": "mysite",
-            "url": "https://mysite.com",
+            "url": "https://mysite2.com",
             "description": "A dummy site for testing",
         }
 

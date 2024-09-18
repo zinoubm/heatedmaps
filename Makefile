@@ -45,3 +45,7 @@ unit_test:
 
 .PHONY: dev-image up bash down test rm build push
 
+# must remove before pushing
+load_terrafrom_vars:
+	export $(cat terrafrom.env | xargs)
+
