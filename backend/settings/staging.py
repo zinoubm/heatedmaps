@@ -6,6 +6,6 @@ logger.setLevel(logging.DEBUG)
 logger.debug("loading settings staging.py")
 
 
-ALLOWED_HOSTS = ["api.heatedmaps.com"]
+ALLOWED_HOSTS = ["*"]
 
 # Override your settings for the staging environment here.
