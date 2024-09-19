@@ -5,11 +5,11 @@ variable "NAMESPACE" {
   type        = string
 }
 
-# variable "domain_name" {
-#   description = "Api domain name"
-#   default = "api.openpdfai.com"
-#   type        = string
-# }
+variable "DOMAIN_NAME" {
+  description = "Api domain name"
+  default = "api.heatedmaps.com"
+  type        = string
+}
 
 variable "SERVICE_NAME" {
   description = "A Docker image-compatible name for the service"
@@ -24,7 +24,7 @@ variable "ENVIRONMENT" {
 
 variable "DJANGO_SETTINGS_MODULE" {
   description = "The settings file for production"
-  default     = "production"
+  default     = "settings.staging"
   type        = string
 }
 
@@ -57,11 +57,11 @@ variable "REGION" {
   type        = string
 }
 
-# # network variables
-# variable "tld_zone_id" {
-#   description = "Top level domain hosted zone ID"
-#   type        = string
-# }
+# network variables
+variable "TLD_ZONE_ID" {
+  description = "Top level domain hosted zone ID"
+  type        = string
+}
 
 variable "VPC_CIDR_BLOCK" {
   description = "CIDR block for the VPC network"

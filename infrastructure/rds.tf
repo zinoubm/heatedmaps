@@ -1,4 +1,3 @@
-# todo: change rds password
 resource "aws_db_subnet_group" "rds_postgres_subnet_group" {
   name = "heatedmaps-db-subnet-group"
   subnet_ids = aws_subnet.private[*].id
