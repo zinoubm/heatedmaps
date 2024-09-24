@@ -24,7 +24,7 @@ variable "ENVIRONMENT" {
 
 variable "DJANGO_SETTINGS_MODULE" {
   description = "The settings file for production"
-  default     = "settings.staging"
+  default     = "settings.production"
   type        = string
 }
 

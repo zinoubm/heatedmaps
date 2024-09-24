@@ -62,9 +62,7 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_HEADERS = False
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "https://heatedmaps.com"]
 
 BACKEND_DOMAIN = "http://localhost:8000"
 FRONTEND_DOMAIN = "http://localhost:3000"
@@ -181,9 +179,7 @@ STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_CONFIRM_REDIRECT_BASE_URL = "http://localhost:3000/email/confirm/"
-PASSWORD_RESET_CONFIRM_REDIRECT_BASE_URL = (
-    "http://localhost:3000/password/confirm/"
-)
+PASSWORD_RESET_CONFIRM_REDIRECT_BASE_URL = "http://localhost:3000/password/confirm/"
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
